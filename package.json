@@ -1,0 +1,15 @@
+{
+  "name": "testando123",
+  "version": "1.0.0",
+  "description": "Simulador de teste para o ENADE",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Fausto Gonçalves Cintra <fausto@fgcintra.pro.br>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
