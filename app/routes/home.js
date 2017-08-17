@@ -1,10 +1,7 @@
-var controller = require('../controllers/home');
-var c = controller();
+//var controller = require('../controllers/home');
 
 module.exports = function(app) {
+   var c = app.controllers.home;
    app.get('/', c.index);
    app.get('/index', c.index);
-   app.get('/ajuda', c.ajuda);
-   app.get('/login', c.login);
-   app.get('/help', c.ajuda);
 };

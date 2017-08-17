@@ -1,6 +1,7 @@
 var express = require('express');
+var load = require('express-load');
 
-var home = require('../app/routes/home');
+//var home = require('../app/routes/home');
 
 module.exports = function() {
    var app = express();
@@ -12,7 +13,17 @@ module.exports = function() {
 
    //app.use(express.static('./public'));
 
-   home(app);
+   //home(app);
+
+   /* Carrega, na ordem, tudo o que estiver em
+      app/models, depois em app/controllers,
+      depois em app/routes, colocando tudo dentro
+      da variável app.
+   */
+   load('models', {cwd: 'app'})
+      .then('controllers')
+      .then('routes')
+      .into(app);
 
    return app;
 };
