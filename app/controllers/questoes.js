@@ -42,6 +42,25 @@ module.exports = function() {
 
    }
 
+   // Exclusão de uma questão
+   controller.excluir = function(req, res) {
+      var idQuestao = req.params.id;
+
+      var restantes = questoes.filter(function(questao){
+         return questao._id != idQuestao;
+      });
+
+      // Se o vetor filtrado tiver menos elementos que o original
+      if(restantes.length < questoes.length) {
+         questoes = restantes;
+         res.status(200).send('Excluído');
+      }
+      else {
+         res.status(404).send('Questão não encontrada para excluir');
+      }
+
+   }
+
    return controller;
 
 }
