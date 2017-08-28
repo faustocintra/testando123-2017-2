@@ -13,6 +13,6 @@ module.exports = function() {
       }
    });
 
-   return mongoose.model('Questao', schema);
+   return mongoose.model('Questao', schema, 'questoes');
 
 }

@@ -1,3 +1,4 @@
+/*
 var questoes = [
    {
       '_id': 1,
@@ -15,30 +16,45 @@ var questoes = [
       'categoria': 'Lógica de Programação'
    }
 ];
+*/
 
-module.exports = function() {
+module.exports = function(app) {
+
+   var Questao = app.models.Questao;
 
    var controller = {};
 
    // Lista todas as questões
    controller.listar = function(req, res) {
-      res.json(questoes);
+      
+      Questao.find().exec().then(
+         function(questoes) { // Callback se der certo
+            res.json(questoes);
+         },
+         function(erro) {     // Callback se der errado
+            console.error(erro);
+            // HTTP 500: erro interno do servidor
+            res.status(500).json(erro);
+         }
+      );
+
    }
 
    // Retorna uma única questão
    controller.obterUm = function(req, res) {
       var idQuestao = req.params.id;
 
-      var questao = questoes.filter(function(questao) {
-         return questao._id == idQuestao;
-      });
-
-      if(questao[0]) {
-         res.json(questao[0]);
-      }
-      else{
-         res.status(404).send('Questão não encontrada');
-      }
+      Questao.findById(idQuestao).exec().then(
+         function(questao) {
+            if(!questao) throw new Error('Questão não encontrada');
+            res.json(questao);
+         },
+         function(erro) {
+            console.log(erro);
+            // HTTP 404: não encontrado
+            res.status(404).json(erro);
+         }
+      );
 
    }
 

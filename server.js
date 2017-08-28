@@ -1,5 +1,10 @@
 var http = require('http');
 var app = require('./config/express')(/* Parênteses vazios aqui */);
+var db = require('./config/database');
+
+// Conecta-se ao MongoDB, no servidor localhost e
+// no banco de dados testando123
+db('mongodb://localhost/testando123');
 
 /* http.createServer(function(req, res) {
    res.writeHead(200, {'Content-Type' : 'text/plain'});
