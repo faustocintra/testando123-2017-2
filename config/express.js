@@ -2,6 +2,7 @@ var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var cors = require('cors');
 
 //var home = require('../app/routes/home');
 
@@ -16,9 +17,13 @@ module.exports = function() {
    /* Assegura que os verbos DELETE e PUT irão funcionar
       mesmo que o navegador cliente não lhes dê suporte
    */
+   
+   app.use(cors());
+   
    app.use(bodyParser.urlencoded({extended: true}));
    app.use(bodyParser.json());
    app.use(methodOverride());
+   
 
    //app.use(express.static('./public'));
 
