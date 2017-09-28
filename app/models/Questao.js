@@ -8,7 +8,8 @@ module.exports = function() {
          required: true
       },
       categoria: {
-         type: String,
+         type: mongoose.Schema.ObjectId,
+         ref: 'Categoria', // model Categoria
          required: true
       }
    });

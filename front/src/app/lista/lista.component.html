@@ -1,5 +1,12 @@
 <h1>Lista de questões</h1>
 
-<ul>
-  <li *ngFor="let questao of questoes">{{questao.descricao}}</li>
-</ul>
+<table id="lista-questoes" class="table table-striped">
+  <tr>
+    <th>Descrição</th>
+    <th>Categoria</th>
+  </tr>
+  <tr *ngFor="let questao of questoes">
+    <td>{{questao.descricao}}</td>
+    <td>{{questao.categoria}}</td>
+  </tr>
+</table>

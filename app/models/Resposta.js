@@ -23,4 +23,6 @@ module.exports = function() {
 
    });
 
+   return mongoose.model('Resposta', schema);
+
 }
