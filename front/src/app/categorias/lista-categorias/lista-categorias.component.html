@@ -1,3 +1,10 @@
-<p>
-  lista-categorias works!
-</p>
+<h1>Lista de categorias</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Descrição</th>
+  </tr>
+  <tr *ngFor="let categoria of categorias">
+    <td>{{categoria.descricao}}</td>
+  </tr>
+</table>
