@@ -7,12 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ListaComponent } from './lista/lista.component';
 import { ListaCategoriasComponent } from './categorias/lista-categorias/lista-categorias.component';
+import { QuestoesFormComponent } from './components/questoes-form/questoes-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaComponent,
-    ListaCategoriasComponent
+    ListaCategoriasComponent,
+    QuestoesFormComponent
   ],
   imports: [
     BrowserModule,
