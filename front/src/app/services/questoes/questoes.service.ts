@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-class Questao {
+export class Questao {
   public _id: string;
   public descricao: string;
   public categoria: string;

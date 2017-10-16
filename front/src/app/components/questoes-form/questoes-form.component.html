@@ -4,12 +4,18 @@
 
   <div class="form-group">
     <label for="categoria">Categoria</label>
-    <select id="categoria" class="form-control"></select>
+    <select id="categoria" name="categoria" class="form-control"
+      ([ngModel])="model.categoria">
+      <option value="">(Selecione)</option>  
+      <option *ngFor="let cat of categorias | async" [value]="cat._id">{{cat.descricao}}</option>
+      </select>
   </div>
   
   <div class="form-group">
     <label for="descricao">Enunciado da questão</label>
-    <textarea id="descricao" class="form-control"></textarea>
+    <textarea id="descricao" name="descricao" class="form-control">
+      {{model.descricao}}
+    </textarea>
   </div>
 
   <div class="text-center">
