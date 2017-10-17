@@ -18,4 +18,9 @@ export class QuestoesService {
     return this.http.get('http://localhost:3000/questoes');
   }
 
+  salvar(dados: Questao) {
+    console.log(dados)
+    return this.http.put('http://localhost:3000/questoes', dados)
+  }
+
 }

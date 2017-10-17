@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './app.router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { ListaComponent } from './lista/lista.component';
@@ -20,7 +21,8 @@ import { QuestoesFormComponent } from './components/questoes-form/questoes-form.
     BrowserModule,
     HttpClientModule,
     RoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

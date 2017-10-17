@@ -1,23 +1,3 @@
-/*
-var questoes = [
-   {
-      '_id': 1,
-      'enunciado': 'Qual a representação de 17 decimal em binário?',
-      'categoria': 'Computação'
-   },
-   {
-      '_id': 2,
-      'enunciado': 'Em Engenharia de Software, requisito é:',
-      'categoria': 'Engenharia de Software'
-   },
-   {
-      '_id': 3,
-      'enunciado': 'Para efetuar contagens, a estrutura de repetição mais apropriada é:',
-      'categoria': 'Lógica de Programação'
-   }
-];
-*/
-
 module.exports = function(app) {
 
    var Questao = app.models.Questao;
@@ -75,6 +55,21 @@ module.exports = function(app) {
          res.status(404).send('Questão não encontrada para excluir');
       }
 
+   }
+
+   // Inserção de uma nova questão
+   controller.novo = function(req, res) {
+      Questao.create(req.body).then(
+         function(questao) {
+            // HTTP 201: criado
+            res.status(201).json(questao);
+         },
+         function(erro) {
+            console.error(erro);
+            // HTTP 500: Erro interno do servidor
+            res.status(500).json(erro);
+         }
+      )
    }
 
    return controller;
