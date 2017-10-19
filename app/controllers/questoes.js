@@ -7,7 +7,9 @@ module.exports = function(app) {
    // Lista todas as questões
    controller.listar = function(req, res) {
       
-      Questao.find().exec().then(
+      // populate('categoria'): preenche o campo de referência
+      // à categoria com dados reais da categoria
+      Questao.find().populate('categoria').exec().then(
          function(questoes) { // Callback se der certo
             res.json(questoes);
          },

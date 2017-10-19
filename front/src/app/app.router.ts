@@ -28,6 +28,11 @@ const routes: Routes = [
    {
       path: 'questoes/nova',
       component: QuestoesFormComponent
+   },
+
+   {
+      path: 'questoes/:id',
+      component: QuestoesFormComponent
    }
    
 ]

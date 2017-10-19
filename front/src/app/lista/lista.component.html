@@ -1,12 +1,18 @@
 <h1>Lista de questões</h1>
 
+<a routerLink="/questoes/nova" class="btn btn-primary btn-md">Nova questão</a>
+
 <table class="table table-striped">
   <tr>
     <th>Descrição</th>
     <th>Categoria</th>
   </tr>
   <tr *ngFor="let questao of questoes">
-    <td>{{questao.descricao}}</td>
-    <td>{{questao.categoria}}</td>
+    <td>
+      <a [routerLink]="['/questoes', questao._id]">
+        {{questao.descricao}}
+      </a>
+    </td>
+    <td>{{questao.categoria.descricao}}</td>
   </tr>
 </table>

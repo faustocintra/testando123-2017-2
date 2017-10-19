@@ -13,8 +13,7 @@
   
   <div class="form-group">
     <label for="descricao">Enunciado da questão</label>
-    <textarea id="descricao" name="descricao" class="form-control">
-      {{model.descricao}}
+    <textarea id="descricao" name="descricao" class="form-control" [(ngModel)]="model.descricao">
     </textarea>
   </div>
 
