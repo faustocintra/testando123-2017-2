@@ -44,18 +44,15 @@ module.exports = function(app) {
    controller.excluir = function(req, res) {
       var idQuestao = req.params.id;
 
-      var restantes = questoes.filter(function(questao){
-         return questao._id != idQuestao;
-      });
-
-      // Se o vetor filtrado tiver menos elementos que o original
-      if(restantes.length < questoes.length) {
-         questoes = restantes;
-         res.status(200).send('Excluído');
-      }
-      else {
-         res.status(404).send('Questão não encontrada para excluir');
-      }
+      Questao.remove({_id: idQuestao}).exec().then(
+         function() {
+            // HTTP 204: Sem conteúdo            
+            res.status(204).end();
+         },
+         function(erro) {
+            console.error(erro);
+         }
+      );
 
    }
 
@@ -72,6 +69,27 @@ module.exports = function(app) {
             res.status(500).json(erro);
          }
       )
+   }
+
+   controller.atualizar = function(req, res) {
+
+      var idQuestao = req.body._id;
+
+      // Se o _id existir, procedemos à atualização
+      if(idQuestao) {
+         Questao.findByIdAndUpdate(idQuestao, req.body).then(
+            function(questao) {
+               // HTTP 200: OK
+               res.status(200).json(questao);
+            },
+            function (erro) {
+               console.error(erro);
+               // HTTP 500: Erro interno do servidor
+               res.status(500).json(erro);
+            }
+         )
+      }
+
    }
 
    return controller;

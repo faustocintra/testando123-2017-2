@@ -6,6 +6,7 @@
   <tr>
     <th>Descrição</th>
     <th>Categoria</th>
+    <th>Excluir</th>
   </tr>
   <tr *ngFor="let questao of questoes">
     <td>
@@ -14,5 +15,10 @@
       </a>
     </td>
     <td>{{questao.categoria.descricao}}</td>
+    <td>
+      <button (click)="excluir(questao._id)" class="btn btn-default btn-danger">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    </td>
   </tr>
 </table>

@@ -6,5 +6,6 @@ module.exports = function(app) {
    app.get('/questoes/:id', controller.obterUm);
    app.delete('/questoes/:id', controller.excluir);
    app.put('/questoes', controller.novo);
+   app.post('/questoes', controller.atualizar);
 
 }
