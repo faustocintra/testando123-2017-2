@@ -3,6 +3,9 @@ var load = require('express-load');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var cors = require('cors');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
 
 //var home = require('../app/routes/home');
 
@@ -38,6 +41,16 @@ module.exports = function() {
       .then('controllers')
       .then('routes')
       .into(app);
+
+   app.use(cookieParser());
+   app.use(session({
+      // Coloque sua frase secreta aqui
+      secret: 'Des-pa-cito, quiero respirar en tu cuello despacito',
+      resave: true,
+      saveUninitialized: true 
+   }));
+   app.use(passport.initialize());
+   app.use(passport.session());
 
    return app;
 };
