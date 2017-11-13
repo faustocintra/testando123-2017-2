@@ -1,21 +1,23 @@
 var passport = require('passport');
-var GoogleStrategy = require('passport-google').Strategy;
+var mongoose = require('mongoose');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 module.exports = function() {
+
+   var Usuario = mongoose.model('Usuario');
 
    passport.use(new GoogleStrategy({
       clientID: '1026199716202-97tp476f0rv1jkcjrcf0ur1e0trab44m.apps.googleusercontent.com',
       clientSecret: 'jD6gJ_aD4BuhyXAhFB1eutLC',
-      callbackURL: 'http://localhost:3000/auth/google/callback'
+      callbackURL: 'http://localhost:3000/auth/google/callback',
+      scope: 'profile'
    }, 
    
    function(accessToken, refreshToken, profile, done) {
 
-      var Usuario = mongoose.model('Usuario');
-
       Usuario.findOrCreate(
-         { login: profile.username },
-         { nome: profile.name },
+         { login: profile.id },
+         { nome: profile.displayName },
          function(erro, usuario) {
             if(erro) {
                console.log(erro);

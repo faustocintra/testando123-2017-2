@@ -32,16 +32,6 @@ module.exports = function() {
 
    //home(app);
 
-   /* Carrega, na ordem, tudo o que estiver em
-      app/models, depois em app/controllers,
-      depois em app/routes, colocando tudo dentro
-      da variável app.
-   */
-   load('models', {cwd: 'app'})
-      .then('controllers')
-      .then('routes')
-      .into(app);
-
    app.use(cookieParser());
    app.use(session({
       // Coloque sua frase secreta aqui
@@ -51,6 +41,16 @@ module.exports = function() {
    }));
    app.use(passport.initialize());
    app.use(passport.session());
+
+   /* Carrega, na ordem, tudo o que estiver em
+         app/models, depois em app/controllers,
+         depois em app/routes, colocando tudo dentro
+         da variável app.
+      */
+   load('models', { cwd: 'app' })
+      .then('controllers')
+      .then('routes')
+      .into(app);   
 
    return app;
 };

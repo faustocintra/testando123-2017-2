@@ -1,6 +1,9 @@
 var http = require('http');
 var app = require('./config/express')(/* Parênteses vazios aqui */);
 var db = require('./config/database');
+var passport = require('./config/passport');
+
+passport();
 
 // Conecta-se ao MongoDB, no servidor localhost e
 // no banco de dados testando123
